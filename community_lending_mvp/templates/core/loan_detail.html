@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Loan {{ loan.id }}</h2>
+<p>Principal: {{ loan.principal }} | Interest rate: {{ loan.annual_interest_rate }}% | Tenure: {{ loan.tenure_months }} months</p>
+<p>Total interest: {{ loan.total_interest }} | Total payable: {{ loan.total_payable }} | Monthly: {{ loan.monthly_installment }}</p>
+<h3>Documents</h3><ul>{% for d in loan.documents.all %}<li><a href='{{ d.file.url }}'>{{ d.file.name }}</a></li>{% empty %}<li>No docs</li>{% endfor %}</ul>
+<h3>Installments</h3><ul>{% for inst in installments %}<li>{{ inst.due_date }} - {{ inst.amount_due }} - Paid: {{ inst.is_paid }}</li>{% empty %}<li>No installments</li>{% endfor %}</ul>
+{% endblock %}

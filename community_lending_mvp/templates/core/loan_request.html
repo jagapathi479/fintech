@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Request Loan</h2>
+<form method="post" enctype="multipart/form-data">{% csrf_token %}{{ form.as_p }}<label>Upload documents (multiple allowed): <input type='file' name='docs' multiple></label><br><button type='submit'>Submit</button></form>
+{% endblock %}

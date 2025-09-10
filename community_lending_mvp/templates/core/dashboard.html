@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Dashboard</h2>
+<h3>Your Loans</h3>
+<ul>{% for loan in loans %}<li><a href='{% url "core:loan_detail" loan.id %}'>{{ loan }}</a> - Status: {{ loan.status }}</li>{% empty %}<li>No loans yet</li>{% endfor %}</ul>
+<h3>Upcoming Installments</h3>
+<ul>{% for inst in upcoming %}<li>{{ inst.due_date }} - {{ inst.amount_due }} - Paid: {{ inst.is_paid }}</li>{% empty %}<li>No upcoming</li>{% endfor %}</ul>
+<h3>Payments</h3>
+<ul>{% for p in payments %}<li>{{ p.created_at }} - {{ p.amount }} - {{ p.method }}</li>{% empty %}<li>No payments</li>{% endfor %}</ul>
+{% endblock %}
